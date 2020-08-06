@@ -1,3 +1,5 @@
+require('dotenv').config 
+
 const express = require("express")
 
 const server = express()
@@ -5,7 +7,9 @@ const server = express()
 const PORT = process.env.PORT|| 4000
 
 server.get('/', function(req, res) {
-    res.status(200).json({message: `Success!`})
+    const message = process.env.MESSAGE || "Hello from index.js"
+
+    res.status(200).json({ message })
 })
 
 server.listen(PORT, () => {
